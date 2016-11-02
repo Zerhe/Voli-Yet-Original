@@ -27,6 +27,7 @@ class PlayState extends FlxState
 		piso.makeGraphic(FlxG.width, 20);
 		piso.immovable = true;
 		add(player1);
+		add(player1.barraEnergia)
 		add(player2);
 		add(piso);
 		add(net);
