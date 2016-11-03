@@ -44,7 +44,7 @@ class Jugador extends FlxSprite
 					velocity.x = speed;
 				if (FlxG.keys.justPressed.W && isTouching(FlxObject.FLOOR))
 					velocity.y = -450;
-				if (FlxG.keys.pressed.W && !isTouching(FlxObject.FLOOR) && barraLife > 0){
+				if (FlxG.keys.pressed.W && !isTouching(FlxObject.FLOOR)){
 					velocity.y = -200;
 					barraLife -= 5;
 				}

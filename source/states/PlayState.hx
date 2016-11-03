@@ -31,8 +31,9 @@ class PlayState extends FlxState
 		pelota = new Pelota(FlxG.width/2-16, 100);
 		add(piso);
 		add(player1);
-		add(player1.barraEnergia)
+		add(player1.barraEnergia);
 		add(player2);
+		add(player2.barraEnergia);
 		add(net);
 		add(pelota);
 		add(pelota.sombra);
