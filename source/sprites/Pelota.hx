@@ -19,13 +19,19 @@ class Pelota extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		makeGraphic(32, 32, 0xFF0000FF);
 		sombra.makeGraphic(32, 16, 0xFF999966);
-		sombra.y = FlxG.height - sombra.height * 2;
+		//sombra.loadGraphic(AssetPaths.,false,32,16)
+		sombra.y = FlxG.height - sombra.height;
 		sombra.alpha = 0.5;
+		acceleration.y = 600;
 	}
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
 		sombra.x = x;
+		if (x <= 0 && velocity.x < 0)
+			velocity.x *= -1;
+		else if (x > FlxG.width - width && velocity.x>0)
+			velocity.x *= -1;
 	}
 	
 }
