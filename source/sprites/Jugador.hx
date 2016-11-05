@@ -13,7 +13,7 @@ class Jugador extends FlxSprite
 	private var speed:Float = 225;
 	private var numeroJugador:Bool = true;
 	public var barraEnergia:FlxSprite;
-	private var barraLife:Int = 100;
+	private var barraLife:Int = 1000;
 	private var timerBarra:Int = 0;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
@@ -29,12 +29,19 @@ class Jugador extends FlxSprite
 	{
 		velocity.x = 0;
 		timerBarra++;
-		if (barraLife < 100 && timerBarra == 10){
-			barraLife++;
-			timerBarra = 0;
-		}
 		trace(barraLife);
 		trace(timerBarra);
+		
+		if (timerBarra == 100){
+			barraLife+= 1000;
+			timerBarra = 0;
+		}
+		if (barraLife > 1000)
+			barraLife = 1000;
+		/*for (i in 0...100)
+			if (barraLife == i * 10)
+				barraEnergia.makeGraphic(16, i, 0xffff0000);
+		*/
 		switch(numeroJugador)
 		{
 			case true:
@@ -44,20 +51,22 @@ class Jugador extends FlxSprite
 					velocity.x = speed;
 				if (FlxG.keys.justPressed.W && isTouching(FlxObject.FLOOR))
 					velocity.y = -450;
-				if (FlxG.keys.pressed.W && !isTouching(FlxObject.FLOOR)){
+				if (FlxG.keys.pressed.W && !isTouching(FlxObject.FLOOR) && barraLife > 49){
 					velocity.y = -200;
-					barraLife -= 5;
+					barraLife -= 20;
 				}
 			default:
 				barraEnergia.x = FlxG.width - barraEnergia.width * 2;
-				if (FlxG.keys.pressed.J)
+				if (FlxG.keys.pressed.LEFT)
 					velocity.x = -speed;
-				if (FlxG.keys.pressed.L && x<FlxG.width-width)
+				if (FlxG.keys.pressed.RIGHT && x<FlxG.width-width)
 					velocity.x = speed;
-				if (FlxG.keys.justPressed.I && isTouching(FlxObject.FLOOR))
+				if (FlxG.keys.justPressed.UP && isTouching(FlxObject.FLOOR))
 					velocity.y = -450;
-				if (FlxG.keys.pressed.I && !isTouching(FlxObject.FLOOR))
+				if (FlxG.keys.pressed.UP && !isTouching(FlxObject.FLOOR) && barraLife > 49){
 					velocity.y = -200;
+					barraLife -= 25;
+				}
 		}
 		super.update(elapsed);
 	}
