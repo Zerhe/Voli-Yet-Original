@@ -29,9 +29,9 @@ class Pelota extends FlxSprite
 		super.update(elapsed);
 		sombra.x = x;
 		if (x <= 0 && velocity.x < 0)
-			velocity.x *= -1;
+			velocity.x = 150;
 		else if (x > FlxG.width - width && velocity.x>0)
-			velocity.x *= -1;
+			velocity.x = -150;
 	}
 	
 }

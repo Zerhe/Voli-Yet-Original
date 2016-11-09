@@ -10,7 +10,7 @@ import flixel.FlxObject;
  */
 class Jugador extends FlxSprite
 {
-	private var speed:Float = 225;
+	private var hSpeed:Float = 225;
 	private var numeroJugador:Bool = true;
 	public var barraEnergia:FlxSprite;
 	private var barraLife:Int = 1000;
@@ -46,24 +46,24 @@ class Jugador extends FlxSprite
 		{
 			case true:
 				if (FlxG.keys.pressed.A && x>0)
-					velocity.x = -speed;
+					velocity.x = -hSpeed;
 				if (FlxG.keys.pressed.D)
-					velocity.x = speed;
+					velocity.x = hSpeed;
 				if (FlxG.keys.justPressed.W && isTouching(FlxObject.FLOOR))
 					velocity.y = -450;
-				if (FlxG.keys.pressed.W && !isTouching(FlxObject.FLOOR) && barraLife > 49){
+				if (FlxG.keys.pressed.W && !isTouching(FlxObject.FLOOR) && barraLife > 59){
 					velocity.y = -200;
-					barraLife -= 20;
+					barraLife -= 25;
 				}
 			default:
 				barraEnergia.x = FlxG.width - barraEnergia.width * 2;
 				if (FlxG.keys.pressed.LEFT)
-					velocity.x = -speed;
+					velocity.x = -hSpeed;
 				if (FlxG.keys.pressed.RIGHT && x<FlxG.width-width)
-					velocity.x = speed;
+					velocity.x = hSpeed;
 				if (FlxG.keys.justPressed.UP && isTouching(FlxObject.FLOOR))
 					velocity.y = -450;
-				if (FlxG.keys.pressed.UP && !isTouching(FlxObject.FLOOR) && barraLife > 49){
+				if (FlxG.keys.pressed.UP && !isTouching(FlxObject.FLOOR) && barraLife > 59){
 					velocity.y = -200;
 					barraLife -= 25;
 				}
