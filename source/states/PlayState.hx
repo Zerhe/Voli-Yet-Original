@@ -71,6 +71,16 @@ class PlayState extends FlxState
 			player2.y = piso.y - player2.height;
 		if (FlxG.keys.pressed.R)
 			FlxG.resetState();
+		if (Reg.score01 > 9)
+		{
+			Reg.ganador = 1;
+			FlxG.switchState(new WinScreen());
+		}
+		else if (Reg.score02 > 9)
+		{
+			Reg.ganador = 2;
+			FlxG.switchState(new WinScreen());
+		}
 	}
 	public function colisionesPelota()
 	{
