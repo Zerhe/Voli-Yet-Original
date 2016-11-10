@@ -19,6 +19,7 @@ class PlayState extends FlxState
 	private var scoreText:FlxText;
 	private var energiaPlayer1:FlxBar;
 	private var energiaPlayer2:FlxBar;
+	private var fondo:FlxSprite = new FlxSprite();
 	
 	override public function create():Void
 	{
@@ -28,9 +29,10 @@ class PlayState extends FlxState
 		scoreText = new FlxText(300, 20, 0, Reg.score01 + "  |  " + Reg.score02, 20);
 		player1 = new Jugador(FlxG.width/4, FlxG.height);
 		player2 = new Jugador(FlxG.width / 2 + FlxG.width / 4, FlxG.height);
-		player2.setearTeclas(false);
+		player1.setearJugador(true);
+		player2.setearJugador(false);
 		piso = new FlxSprite(0,FlxG.height-20);
-		piso.makeGraphic(FlxG.width, 20);
+		piso.loadGraphic(AssetPaths.Piso__png, FlxG.width, 20);
 		piso.immovable = true;
 		net.immovable = true;
 		pelota = new Pelota(FlxG.width / 2 - 16, 100);
@@ -42,6 +44,8 @@ class PlayState extends FlxState
 		energiaPlayer2.parent = player2;
 		energiaPlayer1.parentVariable = "barraLife";
 		energiaPlayer2.parentVariable = "barraLife";
+		fondo.loadGraphic(AssetPaths.Fondo__png,false, 640, 480);
+		add(fondo);
 		add(energiaPlayer1);
 		add(energiaPlayer2);
 		add(piso);
@@ -74,11 +78,15 @@ class PlayState extends FlxState
 		if (Reg.score01 > 9)
 		{
 			Reg.ganador = 1;
+			Reg.score01 = 0;
+			Reg.score02 = 0;
 			FlxG.switchState(new WinScreen());
 		}
 		else if (Reg.score02 > 9)
 		{
 			Reg.ganador = 2;
+			Reg.score01 = 0;
+			Reg.score02 = 0;
 			FlxG.switchState(new WinScreen());
 		}
 	}

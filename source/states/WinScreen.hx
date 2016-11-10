@@ -16,12 +16,15 @@ class WinScreen extends FlxState
 	{
 		super.create();
 		winText = new FlxText(FlxG.width / 2, FlxG.height / 2, 0, "El ganador es el jugador " + Reg.ganador, 30);
-		reiniciarText = new FlxText(FlxG.width / 2, FlxG.height / 2, 0, "Presione Espacio para reiniciar", 20);
 		winText.x -= winText.width / 2;
-		winText.y -= winText.height / 2;
+		winText.y -= winText.height / 2 + winText.height;
 		winText.color = 0xFFFF0000;
-		reiniciarText.color = 0xFF0000FF;
-		reiniciarText.y -= winText.height / 2 + winText.height*2;
+		reiniciarText = new FlxText(winText.x, winText.y, 0, "Presione Espacio para reiniciar", 20);
+		reiniciarText.color = 0xFF00FF00;
+		reiniciarText.x = - reiniciarText.width / 2 + FlxG.width/2;
+		reiniciarText.y -= reiniciarText.height / 2 - winText.height * 2;
+		add(winText);
+		add(reiniciarText);
 	}
 	override public function update(elapsed:Float):Void
 	{

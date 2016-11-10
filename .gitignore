@@ -22,3 +22,7 @@ export/windows/neko/bin/Voli-Yet-Original.exe
 export/windows/neko/bin/sqlite.ndll
 export/windows/neko/bin/neko.dll
 export/windows/neko/bin/std.ndll
+export/windows/neko/bin/assets/images/Player02.png
+export/windows/neko/bin/assets/images/Player01.png
+export/windows/neko/bin/assets/images/Piso.png
+export/windows/neko/bin/assets/images/Fondo.png
