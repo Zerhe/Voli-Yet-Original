@@ -1,0 +1,9 @@
+export/windows/neko/obj/ApplicationMain.n
+export/windows/neko/haxe/release.hxml
+export/windows/neko/haxe/NMEPreloader.hx
+export/windows/neko/haxe/lime/AssetData.hx
+export/windows/neko/haxe/final.hxml
+export/windows/neko/haxe/DefaultAssetLibrary.hx
+export/windows/neko/haxe/debug.hxml
+export/windows/neko/haxe/ApplicationMain.hx
+export/windows/neko/bin/zlib.ndll
