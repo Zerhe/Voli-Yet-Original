@@ -17,12 +17,13 @@ class Pelota extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(32, 32, 0xFF0000FF);
 		sombra.makeGraphic(32, 16, 0xFF999966);
-		//sombra.loadGraphic(AssetPaths.,false,32,16)
+		loadGraphic(AssetPaths.Pelota__png, true, 32, 32);
+		animation.add("quieto", [0, 1, 2, 3], 4, true);
+		animation.play("quieto");
 		sombra.y = FlxG.height - sombra.height;
 		sombra.alpha = 0.5;
-		acceleration.y = 600;
+		acceleration.y = 800;
 	}
 	override public function update(elapsed:Float):Void
 	{
@@ -32,6 +33,19 @@ class Pelota extends FlxSprite
 			velocity.x = 150;
 		else if (x > FlxG.width - width && velocity.x>0)
 			velocity.x = -150;
+		rotar();
+		Reg.pelotaPosX = x;
+	}
+	private function rotar()
+	{
+		if(velocity.x > 0)
+			angle+= 2;
+		else if(velocity.x < 0)
+			angle-= 2;
+		if (velocity.x > 200)
+			angle+= 2;
+		else if (velocity.x < -200)
+			angle-= 2;
 	}
 	
 }

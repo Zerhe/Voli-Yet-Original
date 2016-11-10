@@ -26,8 +26,8 @@ class PlayState extends FlxState
 		net.makeGraphic(3, 240);
 		FlxG.mouse.visible = false;
 		scoreText = new FlxText(300, 20, 0, Reg.score01 + "  |  " + Reg.score02, 20);
-		player1 = new Jugador(FlxG.width/4, 50);
-		player2 = new Jugador(FlxG.width / 2 + FlxG.width / 4, 50);
+		player1 = new Jugador(FlxG.width/4, FlxG.height);
+		player2 = new Jugador(FlxG.width / 2 + FlxG.width / 4, FlxG.height);
 		player2.setearTeclas(false);
 		piso = new FlxSprite(0,FlxG.height-20);
 		piso.makeGraphic(FlxG.width, 20);
@@ -81,8 +81,6 @@ class PlayState extends FlxState
 			else
 				Reg.score02++;
 			pelota.x = FlxG.width / 2 - 16;
-			/*pelota.y = 100;
-			pelota.velocity.x = 0;*/
 			FlxG.resetState();
 		}
 		if (FlxG.collide(player1, pelota) && player1.y > pelota.y - player1.height/2)
@@ -91,7 +89,8 @@ class PlayState extends FlxState
 			pelota.velocity.y = -350;
 		if (FlxG.collide(pelota, net))
 		{
-			pelota.velocity.y = -200;
+			if (pelota.y + pelota.height < net.y+1)
+				pelota.velocity.y = -200;
 			if (pelota.x < net.x - pelota.width + 1)
 				pelota.velocity.x = -150;
 			else if (pelota.x > net.x)

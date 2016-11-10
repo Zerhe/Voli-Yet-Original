@@ -26,9 +26,10 @@ class Jugador extends FlxSprite
 		velocity.x = 0;
 		if(barraLife < 100)
 			timerBarra++;
-		//trace(barraLife);
-		//trace(timerBarra);
-		
+		if (x > Reg.pelotaPosX)
+			flipX = true;
+		else
+			flipX = false;
 		if (timerBarra >= 100){
 			if(isTouching(FlxObject.FLOOR)){
 				barraLife+= 100;
